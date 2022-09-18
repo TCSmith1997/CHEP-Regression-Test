@@ -15,8 +15,18 @@ if __name__ == '__main__':
     edgeBrowser.implicitly_wait(10)
     edgeBrowser.delete_all_cookies()
     edgeBrowser.get('https://www.chep.com')
+    edgeBrowser.maximize_window()
     time.sleep(5)
     cookieButton = edgeBrowser.find_element_by_id("onetrust-accept-btn-handler")
     assert cookieButton
     cookieButton.click()
+    flag = edgeBrowser.find_element_by_xpath("/html[1]/body[1]/div[1]/header[1]/section[2]/nav[1]/div[1]/section[1]/ul[2]/li[1]/div[2]/a[1]/img[1]")
+    flagSrc = flag.get_attribute('src')
+    language = edgeBrowser.find_element_by_xpath("/html[1]/body[1]/div[1]/header[1]/section[2]/nav[1]/div[1]/section[1]/ul[2]/li[1]/div[1]/p[1]").text
+    if flagSrc == "https://www.chep.com/files/country_flags/United%20States.png" and language=="English":
+        pass
+    else:
+        flag.click()
+        edgeBrowser.find_element_by_xpath("/html[1]/body[1]/div[1]/section[1]/div[3]/div[2]/div[2]/ul[1]/li[7]/div[1]/ul[1]/li[4]/a[1]").click()
     edgeBrowser.quit()
+    
