@@ -28,5 +28,12 @@ if __name__ == '__main__':
     else:
         flag.click()
         edgeBrowser.find_element_by_xpath("/html[1]/body[1]/div[1]/section[1]/div[3]/div[2]/div[2]/ul[1]/li[7]/div[1]/ul[1]/li[4]/a[1]").click()
-    edgeBrowser.quit()
-    
+    whyTab=edgeBrowser.find_element_by_xpath("//a[contains(text(),'Why CHEP?')]")
+    productsTab=edgeBrowser.find_element_by_link_text("Products")
+    servicesTab=edgeBrowser.find_element_by_link_text("Services & Solutions")
+    sustainabilityTab=edgeBrowser.find_element_by_link_text("Sustainability")
+    aboutTab=edgeBrowser.find_element_by_link_text("About")
+    careersTab=edgeBrowser.find_element_by_link_text("Careers")
+    assert(whyTab and productsTab and servicesTab and sustainabilityTab and aboutTab and careersTab)
+    productsTab.click()
+    #edgeBrowser.quit()
